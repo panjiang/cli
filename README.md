@@ -5,8 +5,8 @@
 import "github.com/panjiang/cli/db"
 
 // Init instance
-conf := &db.MysqlConfig{Addr: "localhost:3306", User: "root", Password: "root", DB: "test"}
-if err := db.InitMysqlCli(conf); err != nil {
+conf := db.MysqlConfig{Addr: "localhost:3306", User: "root", Password: "root", DB: "test"}
+if err := db.InitMysqlCli(&conf); err != nil {
 	log.Fatal(err)
 }
 
