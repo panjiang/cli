@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/go-redis/redis"
-	"github.com/panjiang/golog"
 )
 
 // RDS a global Redis client
@@ -55,7 +54,6 @@ func NewUniversalRedisClient(conf *RedisConfig) (redis.UniversalClient, error) {
 	var err error
 
 	if conf.Cluster != "" {
-		log.Info("connect to redis cluster")
 		client, err = newRedisClusterClient(conf.Cluster)
 	} else {
 		client, err = newRedisClient(conf.Addr, conf.Password, conf.DB)

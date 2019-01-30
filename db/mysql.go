@@ -18,8 +18,8 @@ type MysqlConfig struct {
 	DB       string `json:"db"`
 }
 
-func newMysqlClient(addr string, user string, pwd string, dbname string) (*gorm.DB, error) {
-	connStr := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=true", user, pwd, addr, dbname)
+func newMysqlClient(addr, user, pwd, dbname string) (*gorm.DB, error) {
+	connStr := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=true&loc=Local&readTimeout=10s&timeout=10s", user, pwd, addr, dbname)
 	db, err := gorm.Open("mysql", connStr)
 	if err != nil {
 		return nil, err
